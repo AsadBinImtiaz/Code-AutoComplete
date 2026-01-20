@@ -1,0 +1,115 @@
+{
+  "model_name": "Qwen/Qwen2.5-Coder-3B",
+  "training_type": "iterative_subset_lora",
+  "best_iteration": 3,
+  "best_eval_loss": 1.1571848392486572,
+  "config": {
+    "max_length": 1024,
+    "seed": 42,
+    "num_iterations": 10,
+    "samples_per_iteration": 5000,
+    "epochs_per_iteration": 1,
+    "val_max_samples": 2500,
+    "batch_size": 1,
+    "grad_accum": 8,
+    "lr": 0.0002,
+    "warmup_ratio": 0.03,
+    "save_steps": 100,
+    "lora": {
+      "r": 16,
+      "alpha": 32,
+      "dropout": 0.05,
+      "target_modules": [
+        "q_proj",
+        "k_proj",
+        "v_proj",
+        "o_proj",
+        "up_proj",
+        "down_proj",
+        "gate_proj"
+      ]
+    }
+  },
+  "iteration_metrics": [
+    {
+      "iteration": 1,
+      "train_loss": 6.908648583984375,
+      "eval_loss": 1.2961474657058716,
+      "samples": 5000,
+      "seed": 42,
+      "resumed_from": null
+    },
+    {
+      "iteration": 2,
+      "train_loss": 7.368908911132812,
+      "eval_loss": 1.279677391052246,
+      "samples": 5000,
+      "seed": 43,
+      "resumed_from": null
+    },
+    {
+      "iteration": 3,
+      "train_loss": 7.83187138671875,
+      "eval_loss": 1.1571848392486572,
+      "samples": 5000,
+      "seed": 44,
+      "resumed_from": null
+    },
+    {
+      "iteration": 4,
+      "train_loss": 7.427954760742187,
+      "eval_loss": 1.1613357067108154,
+      "samples": 5000,
+      "seed": 45,
+      "resumed_from": null
+    },
+    {
+      "iteration": 5,
+      "train_loss": 7.077948486328125,
+      "eval_loss": 1.1661995649337769,
+      "samples": 5000,
+      "seed": 46,
+      "resumed_from": null
+    },
+    {
+      "iteration": 6,
+      "train_loss": 6.69973427734375,
+      "eval_loss": 1.1656914949417114,
+      "samples": 5000,
+      "seed": 47,
+      "resumed_from": null
+    },
+    {
+      "iteration": 7,
+      "train_loss": 6.3903568115234375,
+      "eval_loss": 1.1758365631103516,
+      "samples": 5000,
+      "seed": 48,
+      "resumed_from": null
+    },
+    {
+      "iteration": 8,
+      "train_loss": 5.313994580078125,
+      "eval_loss": 1.1943005323410034,
+      "samples": 5000,
+      "seed": 49,
+      "resumed_from": null
+    },
+    {
+      "iteration": 9,
+      "train_loss": 4.945874731445312,
+      "eval_loss": 1.2045544385910034,
+      "samples": 5000,
+      "seed": 50,
+      "resumed_from": null
+    },
+    {
+      "iteration": 10,
+      "train_loss": 4.778274194335937,
+      "eval_loss": 1.2106775045394897,
+      "samples": 5000,
+      "seed": 51,
+      "resumed_from": null
+    }
+  ]
+}

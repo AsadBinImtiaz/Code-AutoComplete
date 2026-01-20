@@ -1,0 +1,158 @@
+{
+  "model_name": "Qwen/Qwen2.5-Coder-3B",
+  "model_type": "M0_baseline",
+  "fim_supported": true,
+  "generic_evaluation": {
+    "summary": {
+      "total_samples": 3,
+      "syntax_valid_count": 3,
+      "syntax_validity_percent": 100.0,
+      "mean_latency_ms": 1697.752555211385,
+      "min_latency_ms": 199.63407516479492,
+      "max_latency_ms": 3909.658908843994,
+      "p50_latency_ms": 983.9646816253662,
+      "p95_latency_ms": 3909.658908843994,
+      "mean_keyword_match_rate": 1.0
+    },
+    "detailed_results": [
+      {
+        "name": "Factorial Function",
+        "prompt": "# Write Python code for the following docstring\n\"\"\"\nCalculate the factorial of a number using recursion.\nArgs:\n    n: A non-negative integer\nReturns:\n    The factorial of n\n\"\"\"\n\n# Code:\n",
+        "generated": "def factorial(n):\n    if n == 0:\n        return 1\n    else:\n        return n * factorial(n-1)",
+        "latency_ms": 3909.658908843994,
+        "syntax_valid": true,
+        "syntax_error": null,
+        "keywords_found": [
+          "def",
+          "factorial",
+          "if",
+          "return",
+          "n"
+        ],
+        "keywords_expected": [
+          "def",
+          "factorial",
+          "if",
+          "return",
+          "n"
+        ],
+        "keyword_match_rate": 1.0
+      },
+      {
+        "name": "List Filter",
+        "prompt": "# Write Python code for the following docstring\n\"\"\"\nFilter a list to keep only even numbers.\nArgs:\n    numbers: A list of integers\nReturns:\n    A list containing only even numbers\n\"\"\"\n\n# Code:\n",
+        "generated": "def filter_even_numbers(numbers):\n    \"\"\"\n    Filter a list to keep only even numbers.\n    Args:\n        numbers: A list of integers\n    Returns:\n        A list containing only even numbers\n    \"\"\"\n    return [num for num in numbers if num % 2 == 0]",
+        "latency_ms": 983.9646816253662,
+        "syntax_valid": true,
+        "syntax_error": null,
+        "keywords_found": [
+          "def",
+          "filter",
+          "even",
+          "%",
+          "2"
+        ],
+        "keywords_expected": [
+          "def",
+          "filter",
+          "even",
+          "%",
+          "2"
+        ],
+        "keyword_match_rate": 1.0
+      },
+      {
+        "name": "String Reversal",
+        "prompt": "# Write Python code for the following docstring\n\"\"\"\nReverse a string.\nArgs:\n    text: The input string\nReturns:\n    The reversed string\n\"\"\"\n\n# Code:\n",
+        "generated": "def reverse_string(text):\n    return text[::-1]",
+        "latency_ms": 199.63407516479492,
+        "syntax_valid": true,
+        "syntax_error": null,
+        "keywords_found": [
+          "def",
+          "reverse",
+          "return",
+          "[::-1]"
+        ],
+        "keywords_expected": [
+          "def",
+          "reverse",
+          "return",
+          "[::-1]"
+        ],
+        "keyword_match_rate": 1.0
+      }
+    ]
+  },
+  "cdk_evaluation": {
+    "summary": {
+      "total_samples": 2,
+      "syntax_valid_count": 1,
+      "syntax_validity_percent": 50.0,
+      "mean_latency_ms": 1669.350504875183,
+      "min_latency_ms": 1627.0501613616943,
+      "max_latency_ms": 1711.6508483886719,
+      "p50_latency_ms": 1711.6508483886719,
+      "p95_latency_ms": 1711.6508483886719,
+      "mean_keyword_match_rate": 0.4
+    },
+    "detailed_results": [
+      {
+        "name": "S3 Bucket with Encryption",
+        "prompt": "# Write Python code for the following docstring\n\"\"\"\nCreate an S3 bucket with:\n- Encryption enabled (KMS)\n- Versioning enabled\n- Block public access\n\"\"\"\n\n# Code:\n",
+        "generated": "import boto3\nfrom botocore.exceptions import ClientError\n\ns3 = boto3.client('s3')\n\n# Create the bucket\nbucket_name = 'my-bucket'\ntry:\n    s3.create_bucket(Bucket=bucket_name, CreateBucketConfiguration={'LocationConstraint': 'us-west-2'})\nexcept ClientError as e:\n    if e.response['Error']['Code'] == 'BucketAlreadyExists':\n        print(f\"Bucket '{bucket_name}' already exists.\")\n    else:\n        raise",
+        "latency_ms": 1711.6508483886719,
+        "syntax_valid": true,
+        "syntax_error": null,
+        "keywords_found": [
+          "s3",
+          "Bucket"
+        ],
+        "keywords_expected": [
+          "s3",
+          "Bucket",
+          "encryption",
+          "versioning",
+          "block_public_access"
+        ],
+        "keyword_match_rate": 0.4
+      },
+      {
+        "name": "Lambda Function",
+        "prompt": "# Write Python code for the following docstring\n\"\"\"\nCreate a Lambda function with:\n- Python 3.11 runtime\n- Proper IAM role\n- Environment variables\n\"\"\"\n\n# Code:\n",
+        "generated": "import boto3\nimport os\n\ndef lambda_handler(event, context):\n    # Create an IAM client\n    iam = boto3.client('iam')\n\n    # Create a role\n    role_name = 'my-lambda-role'\n    assume_role_policy_document = {\n        'Version': '2012-10-17',\n        'Statement': [\n            {\n                'Effect': 'Allow',\n                'Principal': {\n                    'Service': 'lambda.amazonaws.com'\n                },\n               ",
+        "latency_ms": 1627.0501613616943,
+        "syntax_valid": false,
+        "syntax_error": "SyntaxError: '{' was never closed (<unknown>, line 13)",
+        "keywords_found": [
+          "lambda",
+          "Role"
+        ],
+        "keywords_expected": [
+          "lambda",
+          "Function",
+          "Role",
+          "runtime",
+          "environment"
+        ],
+        "keyword_match_rate": 0.4
+      }
+    ]
+  },
+  "latency_benchmark": {
+    "mean_ms": 247.6051171620687,
+    "median_ms": 247.56789207458496,
+    "p95_ms": 250.03409385681152,
+    "min_ms": 246.28543853759766,
+    "max_ms": 250.03409385681152,
+    "std_dev_ms": 1.0643459227880052,
+    "num_samples": 15,
+    "p50_requirement_met": true,
+    "p95_requirement_met": true
+  },
+  "overall_metrics": {
+    "total_evaluations": 5,
+    "syntax_valid_count": 4,
+    "syntax_validity_percent": 80.0
+  }
+}

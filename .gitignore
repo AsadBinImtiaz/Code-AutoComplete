@@ -1,0 +1,146 @@
+############################################
+# OS / Editor / IDE
+############################################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+*~
+*.swp
+*.swo
+
+.idea/
+
+# VS Code (keep workspace settings out of repo; adjust to taste)
+.vscode/
+!.vscode/extensions.json
+
+############################################
+# Python
+############################################
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Build / packaging
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Virtual environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Testing / coverage
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+
+# MyPy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+############################################
+# Node / JS / TS
+############################################
+# Dependencies (anywhere)
+node_modules/
+
+# Build outputs
+dist/
+build/
+out/
+coverage/
+.nyc_output/
+*.tsbuildinfo
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+############################################
+# Project-specific: Kiro
+############################################
+# Ignore everything in .kiro anywhere
+.kiro/
+
+############################################
+# Large model files / artifacts
+############################################
+models/
+models/**/*.bin
+models/**/*.safetensors
+models/**/*.pt
+models/**/*.pth
+models/**/*.ckpt
+models/**/pytorch_model.bin
+models/**/model.safetensors
+models/**/adapter_model.bin
+models/**/adapter_config.json
+models/**/training_args.bin
+models/**/.ipynb_checkpoints
+
+############################################
+# Datasets
+############################################
+datasets/**/*.json
+datasets/**/*.jsonl
+datasets/**/*.parquet
+datasets/**/*.arrow
+datasets/**/*.csv
+datasets/**/*.tsv
+datasets/cache/
+datasets/downloads/
+
+############################################
+# Logs and outputs
+############################################
+logs/**/*.log
+logs/**/*.txt
+*.log
+
+wandb/
+mlruns/
+outputs/
+checkpoints/
+
+############################################
+# Temporary files
+############################################
+.tmp/
+temp/
+*.tmp
