@@ -1,0 +1,161 @@
+{
+  "model_name": "/storage/homefs/ai22t082/code_complete/models/trained_adapter/best_adapter",
+  "model_type": "M1_trained",
+  "fim_supported": true,
+  "generic_evaluation": {
+    "summary": {
+      "total_samples": 3,
+      "syntax_valid_count": 3,
+      "syntax_validity_percent": 100.0,
+      "mean_latency_ms": 1366.136868794759,
+      "min_latency_ms": 721.7569351196289,
+      "max_latency_ms": 1757.1792602539062,
+      "p50_latency_ms": 1619.4744110107422,
+      "p95_latency_ms": 1757.1792602539062,
+      "mean_keyword_match_rate": 1.0
+    },
+    "detailed_results": [
+      {
+        "name": "Factorial Function",
+        "prompt": "# Write Python code for the following docstring\n\"\"\"\nCalculate the factorial of a number using recursion.\nArgs:\n    n: A non-negative integer\nReturns:\n    The factorial of n\n\"\"\"\n\n# Code:\n",
+        "generated": "def factorial(n):\n    if n == 0:\n        return 1\n    else:\n        return n * factorial(n-1)\n\n# Test the function\nprint(factorial(5))  # Output: 120\nprint(factorial(0))  # Output: 1\nprint(factorial(1))  # Output: 1",
+        "latency_ms": 1619.4744110107422,
+        "syntax_valid": true,
+        "syntax_error": null,
+        "keywords_found": [
+          "def",
+          "factorial",
+          "if",
+          "return",
+          "n"
+        ],
+        "keywords_expected": [
+          "def",
+          "factorial",
+          "if",
+          "return",
+          "n"
+        ],
+        "keyword_match_rate": 1.0
+      },
+      {
+        "name": "List Filter",
+        "prompt": "# Write Python code for the following docstring\n\"\"\"\nFilter a list to keep only even numbers.\nArgs:\n    numbers: A list of integers\nReturns:\n    A list containing only even numbers\n\"\"\"\n\n# Code:\n",
+        "generated": "def filter_even_numbers(numbers):\n    return [num for num in numbers if num % 2 == 0]\n\n# Test the function\nnumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]\neven_numbers = filter_even_numbers(numbers)\nprint(even_numbers)  # Output: [2, 4, 6, 8, 10]",
+        "latency_ms": 1757.1792602539062,
+        "syntax_valid": true,
+        "syntax_error": null,
+        "keywords_found": [
+          "def",
+          "filter",
+          "even",
+          "%",
+          "2"
+        ],
+        "keywords_expected": [
+          "def",
+          "filter",
+          "even",
+          "%",
+          "2"
+        ],
+        "keyword_match_rate": 1.0
+      },
+      {
+        "name": "String Reversal",
+        "prompt": "# Write Python code for the following docstring\n\"\"\"\nReverse a string.\nArgs:\n    text: The input string\nReturns:\n    The reversed string\n\"\"\"\n\n# Code:\n",
+        "generated": "def reverse_string(text):\n    return text[::-1]\n\n# Test the function\ninput_string = \"Hello, World!\"\nreversed_string = reverse_string(input_string)\nprint(reversed_string)",
+        "latency_ms": 721.7569351196289,
+        "syntax_valid": true,
+        "syntax_error": null,
+        "keywords_found": [
+          "def",
+          "reverse",
+          "return",
+          "[::-1]"
+        ],
+        "keywords_expected": [
+          "def",
+          "reverse",
+          "return",
+          "[::-1]"
+        ],
+        "keyword_match_rate": 1.0
+      }
+    ]
+  },
+  "cdk_evaluation": {
+    "summary": {
+      "total_samples": 2,
+      "syntax_valid_count": 2,
+      "syntax_validity_percent": 100.0,
+      "mean_latency_ms": 1850.1877784729004,
+      "min_latency_ms": 1849.743366241455,
+      "max_latency_ms": 1850.6321907043457,
+      "p50_latency_ms": 1850.6321907043457,
+      "p95_latency_ms": 1850.6321907043457,
+      "mean_keyword_match_rate": 1.0
+    },
+    "detailed_results": [
+      {
+        "name": "S3 Bucket with Encryption",
+        "prompt": "# Write Python code for the following docstring\n\"\"\"\nCreate an S3 bucket with:\n- Encryption enabled (KMS)\n- Versioning enabled\n- Block public access\n\"\"\"\n\n# Code:\n",
+        "generated": "import boto3\nfrom botocore.exceptions import ClientError\n\ndef create_bucket(bucket_name, region=None):\n try:\n if region is None:\n s3_client = boto3.client('s3')\n s3_client.create_bucket(Bucket=bucket_name)\n else:\n s3_client = boto3.client('s3', region_name=region)\n location = {'LocationConstraint': region}\n s3_client.create_bucket(Bucket=bucket_name,\n CreateBucketConfiguration=location)\n except ClientError:\n return False\n return True",
+        "latency_ms": 1850.6321907043457,
+        "syntax_valid": true,
+        "syntax_error": "",
+        "keywords_found": [
+          "s3",
+          "Bucket"
+        ],
+        "keywords_expected": [
+          "s3",
+          "Bucket",
+          "encryption",
+          "versioning",
+          "block_public_access"
+        ],
+        "keyword_match_rate": 0.4
+      },
+      {
+        "name": "Lambda Function",
+        "prompt": "# Write Python code for the following docstring\n\"\"\"\nCreate a Lambda function with:\n- Python 3.11 runtime\n- Proper IAM role\n- Environment variables\n\"\"\"\n\n# Code:\n",
+        "generated": "import aws_cdk as cdk\nfrom aws_cdk import (\n    aws_lambda as _lambda,\n    aws_iam as iam,\n    Stack,\n)\nfrom constructs import Construct\n\nclass LambdaStack(Stack):\n    def __init__(self, scope: Construct, construct_id: str, **kwargs) -> None:\n        super().__init__(scope, construct_id, **kwargs)\n\n        lambda_role = iam.Role(\n            self,\n            \"LambdaExecutionRole\",\n            assumed_by=iam.ServicePrincipal(\"lambda.amazonaws.com\"),\n            managed_policies=[\n                iam.ManagedPolicy.from_aws_managed_policy_name(\n                    \"service-role/AWSLambdaBasicExecutionRole\"\n                )\n            ],\n        )\n\n        # Create the Lambda function\n        _lambda.Function(\n            self,\n            \"MyLambdaFunction\",\n            runtime=_lambda.Runtime.PYTHON_3_11,\n            handler=\"index.handler\",\n            code=_lambda.Code.from_inline(\"def handler(event, context): return 'Hello World'\"),\n            role=lambda_role,\n            environment={\n                \"VAR1\": \"value1\",\n                \"VAR2\": \"value2\",\n            },\n        )\n",
+        "latency_ms": 1849.743366241455,
+        "syntax_valid": true,
+        "syntax_error": "",
+        "keywords_found": [
+          "lambda",
+          "Function",
+          "Role",
+          "runtime",
+          "environment"
+        ],
+        "keywords_expected": [
+          "lambda",
+          "Function",
+          "Role",
+          "runtime",
+          "environment"
+        ],
+        "keyword_match_rate": 1.0
+      }
+    ]
+  },
+  "latency_benchmark": {
+    "mean_ms": 278.19779713948566,
+    "median_ms": 277.097225189209,
+    "p95_ms": 287.07313537597656,
+    "min_ms": 276.34215354919434,
+    "max_ms": 287.07313537597656,
+    "std_dev_ms": 2.619349073192181,
+    "num_samples": 15,
+    "p50_requirement_met": true,
+    "p95_requirement_met": true
+  },
+  "overall_metrics": {
+    "total_evaluations": 5,
+    "syntax_valid_count": 5,
+    "syntax_validity_percent": 100.0
+  }
+}

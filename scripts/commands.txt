@@ -1,0 +1,9 @@
+ python -m uvicorn src.server:app --host 127.0.0.1 --port 8000
+
+ tgdimas1@UM01654 code_complete % curl -s http://127.0.0.1:8000/complete \
+  -H "Content-Type: application/json" \
+  -d '{"language":"python","prefix":"def add(a,b):\n    ","suffix":null,"max_tokens":32}' | jq
+
+tgdimas1@UM01654 code_complete % curl -s http://127.0.0.1:8000/generate \
+  -H "Content-Type: application/json" \
+  -d '{"language":"python","comment":"function to add two integers a and b and return result", "max_tokens":50}' | jq
